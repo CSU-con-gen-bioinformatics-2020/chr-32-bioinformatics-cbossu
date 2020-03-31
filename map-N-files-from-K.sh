@@ -1,5 +1,3 @@
-
-
 # This is a script that takes two positional parameters N and K.
 # It assumes that it is being launched from a directory that contains
 # a TAB-delimited file called chinook-fastq-meta-data.tsv that gives a
@@ -34,13 +32,16 @@ fi
 
 # set up your bioinf conda environemnt
 source ~/.bashrc
-conda activate bioinf
+conda activate binfr
 
 
 # Now, get the first file index and the last file index
 START=$2
 STOP=$(($START + $1 - 1))
 
+#To test interactively, give it actual values
+#START=1
+#STOP=8
 # get the names of the all the different samples (SM tags) that
 # are being processed here.  This is necessary, because we end up 
 # having to merge all the lane-specific bams into a single bam for
@@ -51,6 +52,7 @@ SM_TAGS=$(awk -v low=$START -v high=$STOP '$1 >= low && $1 <= high {print $5}' c
 # NOTE: If you want to test the lines inside the loop just set Idx=5 (for example)
 # on the command line and then run through the lines within the for loop.
 for((Idx=$START; Idx<=$STOP; Idx++)); do
+
 
   echo "Starting work on file index $Idx at $(date)"
   
