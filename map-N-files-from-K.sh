@@ -41,7 +41,7 @@ STOP=$(($START + $1 - 1))
 
 #To test interactively, give it actual values
 #START=1
-#STOP=8
+#STOP=128
 # get the names of the all the different samples (SM tags) that
 # are being processed here.  This is necessary, because we end up 
 # having to merge all the lane-specific bams into a single bam for
